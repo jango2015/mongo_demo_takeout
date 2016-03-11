@@ -104,35 +104,39 @@
             var list = new List<Restaurant>();
             var collection = doc.DocumentNode.SelectNodes(xpath);
             var sb = new StringBuilder();
-            foreach (HtmlNode item in collection)
+            if (collection != null)
             {
-                var model = new Restaurant();
-                var htmlItem = item.ChildNodes.FindFirst("a");
-                var shortUrl = htmlItem.Attributes[0].Value;
-                model.Url = I_Waimai_Meituan_BaseUrl + shortUrl;
-                model.RestaurantId = long.Parse(shortUrl.Substring(shortUrl.LastIndexOf('/') + 1).ToString());
 
-                var childs = htmlItem.ChildNodes;
-                model.AvatarUrl = childs.FindFirst("img").Attributes["data-src-retina"].Value;
-
-                var content = childs[3];
-                var contentChild = content.ChildNodes;
-                model.ShopTitle = contentChild[1].ChildNodes[1].ChildNodes[0].InnerText;
-                model.SoldStatus = contentChild[3].ChildNodes[3].ChildNodes[0].InnerText;
-                try
+                foreach (HtmlNode item in collection)
                 {
-                    var zhuansongImg = contentChild[3].ChildNodes[5].ChildNodes[0].Attributes[0];
-                    model.IsMeituanZhuanSong = zhuansongImg == null ? false : true;
-                }
-                catch
-                {
-                    model.IsMeituanZhuanSong = false;
-                }
-                model.QisongPriceStr = contentChild[5].ChildNodes[1].ChildNodes[1].InnerText;
-                model.PeisongPriceStr = contentChild[5].ChildNodes[3].ChildNodes[2].InnerText;
-                model.PeisongTime = int.Parse(contentChild[5].ChildNodes[5].ChildNodes[1].InnerText);
+                    var model = new Restaurant();
+                    var htmlItem = item.ChildNodes.FindFirst("a");
+                    var shortUrl = htmlItem.Attributes[0].Value;
+                    model.Url = I_Waimai_Meituan_BaseUrl + shortUrl;
+                    model.RestaurantId = long.Parse(shortUrl.Substring(shortUrl.LastIndexOf('/') + 1).ToString());
 
-                list.Add(model);
+                    var childs = htmlItem.ChildNodes;
+                    model.AvatarUrl = childs.FindFirst("img").Attributes["data-src-retina"].Value;
+
+                    var content = childs[3];
+                    var contentChild = content.ChildNodes;
+                    model.ShopTitle = contentChild[1].ChildNodes[1].ChildNodes[0].InnerText;
+                    model.SoldStatus = contentChild[3].ChildNodes[3].ChildNodes[0].InnerText;
+                    try
+                    {
+                        var zhuansongImg = contentChild[3].ChildNodes[5].ChildNodes[0].Attributes[0];
+                        model.IsMeituanZhuanSong = zhuansongImg == null ? false : true;
+                    }
+                    catch
+                    {
+                        model.IsMeituanZhuanSong = false;
+                    }
+                    model.QisongPriceStr = contentChild[5].ChildNodes[1].ChildNodes[1].InnerText;
+                    model.PeisongPriceStr = contentChild[5].ChildNodes[3].ChildNodes[2].InnerText;
+                    model.PeisongTime = int.Parse(contentChild[5].ChildNodes[5].ChildNodes[1].InnerText);
+
+                    list.Add(model);
+                }
             }
 
             return list;

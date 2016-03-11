@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using DataProvider;
+using System.Collections.Generic;
 
 namespace ConsoleApplication1
 {
@@ -8,6 +9,21 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+
+            #region Tuling
+
+            var info = "上海今天的天气";
+            var st = TulingClient.Get(info);
+            var result = st.Str2Obj();
+            var responseType = TulingClient.GetResultType((int)result.code);
+
+
+
+            Console.WriteLine(st);
+
+            #endregion
+
+            #region takeOut
             //var elemeShopListUrl = "https://m.ele.me/restapi/v4/restaurants?extras%5B%5D=restaurant_activity&extras%5B%5D=food_activity&geohash=wtw3tfwrm5g&limit=30&offset=0&type=geohash";
             //var elemeShopListStr = HttpClient.Get(elemeShopListUrl);
             //var elemeShopLists = elemeShopListStr.Str2Obj();
@@ -15,33 +31,39 @@ namespace ConsoleApplication1
             //var str0 = (elemeShopLists as object).Obj2Str<object>();
 
             /// 
-            var iwaimai_meituan_addressUrl = string.Format("http://i.waimai.meituan.com/beijing/search?address={0}", "五棵松");
+            //var iwaimai_meituan_addressUrl = string.Format("http://i.waimai.meituan.com/beijing/search?address={0}", "五棵松");
 
-            var meituanwaimaiUrl = "http://i.waimai.meituan.com/mti/home/wtw3w07tfpvr?page_index=1&apage=1";
-            var meituan_geo_list = HttpClient.Get(iwaimai_meituan_addressUrl).Str2Obj();
-            var meituanShoplistStr = HttpClient.Get(meituanwaimaiUrl);
-            var meituanShoplists = HtmlClient.GetRestaurantsByHtml(meituanShoplistStr, "div");
-
-            var mongo = new MongoDataProvider();
-            mongo.InsertMany<Restaurant>(meituanShoplists);
-
-            var b = mongo.GetAll<Restaurant>();
-
-            var str1 = (meituanShoplists as object).Obj2Str<object>();
-
-            var model = new meituanJsons()
-            {
-                Name = "Meituan_Waimai_ShopList",
-                JsonStr = str1
-            };
-            mongo.Insert<meituanJsons>(model);
-
-            var o = mongo.GetAll<meituanJsons>();
+            //var mongo = new MongoDataProvider();
+            //var meituanShoplists = new List<Restaurant>();
+            //for (int i = 3; i < 50; i++)
+            //{
+            //    var meituanwaimaiUrl = "http://i.waimai.meituan.com/mti/home/wtw3w07tfpvr?page_index=" + i + "&apage=1";
+            //    //var meituan_geo_list = HttpClient.Get(iwaimai_meituan_addressUrl).Str2Obj();
+            //    var meituanShoplistStr = HttpClient.Get(meituanwaimaiUrl);
+            //    var meituanShoplist = HtmlClient.GetRestaurantsByHtml(meituanShoplistStr, "div");
+            //    meituanShoplists.AddRange(meituanShoplist);
+            //}
+            //mongo.InsertMany<Restaurant>(meituanShoplists);
 
 
+            //var b = mongo.GetAll<Restaurant>();
 
+            ////var str1 = (meituanShoplists as object).Obj2Str<object>();
 
+            //#region insert one
+            ////var model = new meituanJsons()
+            ////{
+            ////    Name = "Meituan_Waimai_ShopList",
+            ////    JsonStr = str1
+            ////};
+            ////mongo.Insert<meituanJsons>(model);
 
+            ////var o = mongo.GetAll<meituanJsons>();
+            //#endregion
+
+            //Console.WriteLine(b.Obj2Str());
+
+            #endregion
 
 
             //User user = null;
