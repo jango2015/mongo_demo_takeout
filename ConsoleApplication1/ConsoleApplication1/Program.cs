@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using DataProvider;
 
 namespace ConsoleApplication1
 {
@@ -20,7 +21,25 @@ namespace ConsoleApplication1
             var meituan_geo_list = HttpClient.Get(iwaimai_meituan_addressUrl).Str2Obj();
             var meituanShoplistStr = HttpClient.Get(meituanwaimaiUrl);
             var meituanShoplists = HtmlClient.GetRestaurantsByHtml(meituanShoplistStr, "div");
+
+            var mongo = new MongoDataProvider();
+            mongo.InsertMany<Restaurant>(meituanShoplists);
+
+            var b = mongo.GetAll<Restaurant>();
+
             var str1 = (meituanShoplists as object).Obj2Str<object>();
+
+            var model = new meituanJsons()
+            {
+                Name = "Meituan_Waimai_ShopList",
+                JsonStr = str1
+            };
+            mongo.Insert<meituanJsons>(model);
+
+            var o = mongo.GetAll<meituanJsons>();
+
+
+
 
 
 
@@ -55,6 +74,8 @@ namespace ConsoleApplication1
             Console.ReadLine();
 
         }
+
+
 
         static string formatStr(User user) => $"the user's name is {user?.name},and the use's mobile is {user?.mobile}";
 

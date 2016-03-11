@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson;
 
 namespace ConsoleApplication1
 {
     public class Restaurant
     {
 
+        public ObjectId _id { get; set; }
         /// <summary>
         /// Id
         /// </summary>
-        public long Id { get; set; }
+        public long RestaurantId { get; set; }
 
         public string Url { get; set; }
         /// <summary>

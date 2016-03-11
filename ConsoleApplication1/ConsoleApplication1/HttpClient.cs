@@ -110,7 +110,7 @@
                 var htmlItem = item.ChildNodes.FindFirst("a");
                 var shortUrl = htmlItem.Attributes[0].Value;
                 model.Url = I_Waimai_Meituan_BaseUrl + shortUrl;
-                model.Id = long.Parse(shortUrl.Substring(shortUrl.LastIndexOf('/') + 1).ToString());
+                model.RestaurantId = long.Parse(shortUrl.Substring(shortUrl.LastIndexOf('/') + 1).ToString());
 
                 var childs = htmlItem.ChildNodes;
                 model.AvatarUrl = childs.FindFirst("img").Attributes["data-src-retina"].Value;

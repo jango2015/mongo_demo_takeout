@@ -10,9 +10,14 @@ namespace DataProvider
     {
         T[] GetAll<T>();
         T GetById<T>(long id);
-        void Add<T>(T model);
+        void Insert<T>(T model);
+        Task InsertAsync<T>(T model);
+        void InsertMany<T>(IEnumerable<T> models);
+        void InsertManyAsync<T>(IEnumerable<T> models);
         void Update<T>(T model);
         void Delete<T>(T model);
         void Delete(string key);
+
+        void CreateTable(string TbName);
     }
 }
