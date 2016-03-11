@@ -1,0 +1,10 @@
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\DataProvider.dll
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\DataProvider.pdb
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\MongoDB.Bson.dll
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\MongoDB.Driver.dll
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\MongoDB.Bson.xml
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\bin\Debug\MongoDB.Driver.xml
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\obj\Debug\DataProvider.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\obj\Debug\DataProvider.dll
+C:\Users\Administrator\Documents\visual studio 2015\Projects\mongo_demo_takeout\ConsoleApplication1\DataProvider\obj\Debug\DataProvider.pdb
